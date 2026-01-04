@@ -1,5 +1,8 @@
 ---
 import Analytics from '../components/Analytics.astro';
+import GTM from '../components/GTM.astro';
+import GTMNoScript from '../components/GTMNoScript.astro';
+import Posthog from '../components/Posthog.astro';
 
 interface Props {
   title?: string;
@@ -15,8 +18,10 @@ const {
   ogImage = '/og-image.svg',
 } = Astro.props;
 
-// Google Analytics ID - set in environment variable
+// Analytics IDs - set in environment variables
 const GA_ID = import.meta.env.PUBLIC_GA_ID || '';
+const GTM_ID = import.meta.env.PUBLIC_GTM_ID || 'GTM-WHB72B64';
+const GTM_SERVER = import.meta.env.PUBLIC_GTM_SERVER_URL || 'https://stape.go.drroberiobrandao.com';
 ---
 <!DOCTYPE html>
 <html lang="pt-BR" class="h-full">
@@ -47,9 +52,14 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || '';
     />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-var.woff2" crossorigin />
     <link rel="stylesheet" href="/src/styles/global.css" />
+
+    <!-- Analytics & Tracking -->
+    <GTM gtmId={GTM_ID} serverUrl={GTM_SERVER} />
     <Analytics gaId={GA_ID} />
+    <Posthog />
   </head>
   <body class="min-h-full bg-bg text-text font-sans antialiased">
+    <GTMNoScript gtmId={GTM_ID} serverUrl={GTM_SERVER} />
     <slot />
   </body>
 </html>

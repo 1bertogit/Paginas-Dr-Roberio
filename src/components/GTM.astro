@@ -1,0 +1,33 @@
+---
+interface Props {
+  /** Google Tag Manager Container ID (e.g., GTM-XXXXXXXX) */
+  gtmId?: string;
+  /** Custom GTM server URL (for server-side tagging via Stape, etc.) */
+  serverUrl?: string;
+}
+
+const {
+  gtmId = import.meta.env.PUBLIC_GTM_ID || '',
+  serverUrl = import.meta.env.PUBLIC_GTM_SERVER_URL || 'https://www.googletagmanager.com'
+} = Astro.props;
+
+const shouldRender = gtmId && gtmId.trim() !== '';
+---
+
+{shouldRender && (
+  <>
+    {/* Google Tag Manager - Head Script */}
+    <script is:inline define:vars={{ gtmId, serverUrl }}>
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer' ? '&l='+l : '';
+        j.async=true;
+        j.src=serverUrl+'/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer', gtmId);
+    </script>
+  </>
+)}

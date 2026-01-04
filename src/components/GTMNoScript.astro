@@ -1,0 +1,27 @@
+---
+interface Props {
+  /** Google Tag Manager Container ID (e.g., GTM-XXXXXXXX) */
+  gtmId?: string;
+  /** Custom GTM server URL (for server-side tagging via Stape, etc.) */
+  serverUrl?: string;
+}
+
+const {
+  gtmId = import.meta.env.PUBLIC_GTM_ID || '',
+  serverUrl = import.meta.env.PUBLIC_GTM_SERVER_URL || 'https://www.googletagmanager.com'
+} = Astro.props;
+
+const shouldRender = gtmId && gtmId.trim() !== '';
+const noscriptUrl = `${serverUrl}/ns.html?id=${gtmId}`;
+---
+
+{shouldRender && (
+  <noscript>
+    <iframe
+      src={noscriptUrl}
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"
+    ></iframe>
+  </noscript>
+)}
