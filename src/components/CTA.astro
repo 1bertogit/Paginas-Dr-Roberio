@@ -1,0 +1,13 @@
+---
+const { title, subtitle, ctaLabel = 'Quero testar', ctaHref = '#lead' } = Astro.props;
+---
+<section id="cta" class="px-[5vw] py-12 max-w-3xl mx-auto text-center">
+  <h2 class="text-3xl font-bold mb-3">{title}</h2>
+  <p class="text-slate-200/85 mb-6">{subtitle}</p>
+  <a
+    href={ctaHref}
+    class="px-6 py-3 bg-accent text-bg font-semibold rounded-xl hover:opacity-90 transition"
+  >
+    {ctaLabel}
+  </a>
+</section>

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureList from '../components/FeatureList.astro';
+import CTA from '../components/CTA.astro';
+
+const features = [
+  { title: 'Performance A+', desc: 'Astro com hydration zero e assets otimizados.' },
+  { title: 'SEO-first', desc: 'HTML limpo, OG/meta e sitemap automáticos.' },
+  { title: 'DX rápida', desc: 'Hot reload, Tailwind JIT e build leve.' },
+];
+---
+<BaseLayout
+  title="Landing Rápida"
+  description="Starter Astro + Tailwind para LPs ultrarrápidas com OG tags."
+  ogImage="/og-image.jpg"
+>
+  <Hero
+    eyebrow="Lançamento"
+    title="Construa landing pages ultrarrápidas"
+    subtitle="Starter enxuto com Astro, Tailwind, imagens otimizadas e boas práticas de SEO."
+    ctaLabel="Criar agora"
+    ctaHref="#cta"
+  />
+  <FeatureList items={features} />
+  <CTA
+    title="Pronto para lançar?"
+    subtitle="Publique em minutos com build estático, CSS purgado e assets leves."
+  />
+</BaseLayout>
