@@ -1,0 +1,44 @@
+---
+interface Props {
+  siteName?: string;
+}
+
+const { siteName = 'Landing' } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+<footer class="border-t border-white/10 mt-20">
+  <div class="max-w-5xl mx-auto px-[5vw] py-12">
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Brand -->
+      <div>
+        <p class="text-xl font-bold text-text mb-2">{siteName}</p>
+        <p class="text-slate-400 text-sm">
+          Starter Astro + Tailwind para landing pages ultrarrápidas.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <p class="font-semibold text-text mb-3">Links</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="text-slate-400 hover:text-accent transition">Início</a></li>
+          <li><a href="/sobre" class="text-slate-400 hover:text-accent transition">Sobre</a></li>
+          <li><a href="/contato" class="text-slate-400 hover:text-accent transition">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="font-semibold text-text mb-3">Contato</p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li>contato@exemplo.com</li>
+          <li>São Paulo, Brasil</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-8 pt-8 text-center text-sm text-slate-500">
+      <p>&copy; {currentYear} {siteName}. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
