@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import FeatureList from '../components/FeatureList.astro';
 import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
 
 const features = [
   { title: 'Performance A+', desc: 'Astro com hydration zero e assets otimizados.' },
@@ -13,18 +15,22 @@ const features = [
 <BaseLayout
   title="Landing Rápida"
   description="Starter Astro + Tailwind para LPs ultrarrápidas com OG tags."
-  ogImage="/og-image.jpg"
+  ogImage="/og-image.svg"
 >
-  <Hero
-    eyebrow="Lançamento"
-    title="Construa landing pages ultrarrápidas"
-    subtitle="Starter enxuto com Astro, Tailwind, imagens otimizadas e boas práticas de SEO."
-    ctaLabel="Criar agora"
-    ctaHref="#cta"
-  />
-  <FeatureList items={features} />
-  <CTA
-    title="Pronto para lançar?"
-    subtitle="Publique em minutos com build estático, CSS purgado e assets leves."
-  />
+  <Header siteName="Landing" />
+  <main>
+    <Hero
+      eyebrow="Lançamento"
+      title="Construa landing pages ultrarrápidas"
+      subtitle="Starter enxuto com Astro, Tailwind, imagens otimizadas e boas práticas de SEO."
+      ctaLabel="Criar agora"
+      ctaHref="#cta"
+    />
+    <FeatureList items={features} />
+    <CTA
+      title="Pronto para lançar?"
+      subtitle="Publique em minutos com build estático, CSS purgado e assets leves."
+    />
+  </main>
+  <Footer siteName="Landing" />
 </BaseLayout>

@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/static';
+import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
-import { astroImageTools } from 'astro-imagetools';
 
 export default defineConfig({
+    site: 'https://example.com', // Update with your actual domain
     output: 'static',
     adapter: vercel(),
     prefetch: true,
@@ -11,5 +11,9 @@ export default defineConfig({
     vite: {
         build: { target: 'es2020', cssCodeSplit: true, minify: 'esbuild' },
     },
-    integrations: [sitemap(), astroImageTools],
+    integrations: [sitemap()],
+    image: {
+        // Astro's built-in image optimization
+        service: { entrypoint: 'astro/assets/services/sharp' },
+    },
 });

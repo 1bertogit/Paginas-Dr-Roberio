@@ -1,0 +1,148 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Entre em contato',
+  subtitle = 'Preencha o formulário abaixo e entraremos em contato em breve.'
+} = Astro.props;
+---
+<section id="contact-form" class="px-[5vw] py-16 max-w-2xl mx-auto">
+  <div class="text-center mb-10">
+    <h2 class="text-3xl sm:text-4xl font-bold mb-4">{title}</h2>
+    <p class="text-slate-400">{subtitle}</p>
+  </div>
+
+  <form
+    id="contact"
+    class="grid gap-6"
+    action="#"
+    method="POST"
+  >
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div>
+        <label for="name" class="block text-sm font-medium text-slate-300 mb-2">
+          Nome *
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-text placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition"
+          placeholder="Seu nome"
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-slate-300 mb-2">
+          E-mail *
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-text placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition"
+          placeholder="seu@email.com"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for="phone" class="block text-sm font-medium text-slate-300 mb-2">
+        Telefone
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-text placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition"
+        placeholder="(11) 99999-9999"
+      />
+    </div>
+
+    <div>
+      <label for="subject" class="block text-sm font-medium text-slate-300 mb-2">
+        Assunto *
+      </label>
+      <select
+        id="subject"
+        name="subject"
+        required
+        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition"
+      >
+        <option value="" class="bg-bg">Selecione um assunto</option>
+        <option value="orcamento" class="bg-bg">Orçamento</option>
+        <option value="suporte" class="bg-bg">Suporte</option>
+        <option value="parceria" class="bg-bg">Parceria</option>
+        <option value="outro" class="bg-bg">Outro</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-slate-300 mb-2">
+        Mensagem *
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        required
+        rows="5"
+        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-text placeholder:text-slate-500 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition resize-none"
+        placeholder="Como podemos ajudar?"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full px-6 py-4 bg-accent text-bg font-semibold rounded-xl hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Enviar mensagem
+    </button>
+
+    <p id="form-status" class="text-center text-sm hidden"></p>
+  </form>
+</section>
+
+<script>
+  const form = document.getElementById('contact') as HTMLFormElement;
+  const status = document.getElementById('form-status');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = submitBtn.textContent;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    // Simulate form submission (replace with actual endpoint)
+    try {
+      // For Formspree, replace action with: https://formspree.io/f/YOUR_FORM_ID
+      // For Netlify Forms, add data-netlify="true" to the form
+
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      if (status) {
+        status.textContent = 'Mensagem enviada com sucesso!';
+        status.className = 'text-center text-sm text-green-400';
+        status.classList.remove('hidden');
+      }
+
+      form.reset();
+    } catch (error) {
+      if (status) {
+        status.textContent = 'Erro ao enviar. Tente novamente.';
+        status.className = 'text-center text-sm text-red-400';
+        status.classList.remove('hidden');
+      }
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+</script>

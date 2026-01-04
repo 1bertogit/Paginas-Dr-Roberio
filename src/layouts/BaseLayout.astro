@@ -1,10 +1,22 @@
 ---
+import Analytics from '../components/Analytics.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
 const {
   title = 'Landing',
   description = 'High-perf landing',
   canonical,
-  ogImage = '/og-image.jpg',
+  ogImage = '/og-image.svg',
 } = Astro.props;
+
+// Google Analytics ID - set in environment variable
+const GA_ID = import.meta.env.PUBLIC_GA_ID || '';
 ---
 <!DOCTYPE html>
 <html lang="pt-BR" class="h-full">
@@ -35,8 +47,9 @@ const {
     />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-var.woff2" crossorigin />
     <link rel="stylesheet" href="/src/styles/global.css" />
+    <Analytics gaId={GA_ID} />
   </head>
-  <body class="min-h-full bg-bg text-text">
+  <body class="min-h-full bg-bg text-text font-sans antialiased">
     <slot />
   </body>
 </html>

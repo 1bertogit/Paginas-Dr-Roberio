@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout
+  title="Sobre - Landing Rápida"
+  description="Conheça mais sobre o starter kit Landing Rápida."
+>
+  <Header siteName="Landing" />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="px-[5vw] py-16 max-w-5xl mx-auto">
+      <p class="text-accent uppercase tracking-[0.12em] text-sm mb-4">Sobre nós</p>
+      <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">
+        Conheça o Landing Rápida
+      </h1>
+      <p class="text-lg text-slate-300 max-w-3xl">
+        Um starter kit moderno para criar landing pages de alta performance com as melhores práticas de desenvolvimento web.
+      </p>
+    </section>
+
+    <!-- Content Section -->
+    <section class="px-[5vw] py-12 max-w-5xl mx-auto">
+      <div class="grid gap-12 md:grid-cols-2">
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Nossa Missão</h2>
+          <p class="text-slate-300 mb-4">
+            Simplificar o processo de criação de landing pages profissionais,
+            oferecendo uma base sólida com as melhores tecnologias do mercado.
+          </p>
+          <p class="text-slate-300">
+            Acreditamos que performance e experiência do desenvolvedor não
+            precisam ser mutuamente exclusivas.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Por que Astro?</h2>
+          <p class="text-slate-300 mb-4">
+            Astro entrega HTML puro por padrão, sem JavaScript desnecessário.
+            Isso significa páginas mais rápidas e melhor SEO.
+          </p>
+          <p class="text-slate-300">
+            Combine isso com Tailwind CSS e você tem uma stack poderosa
+            para criar interfaces modernas rapidamente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="px-[5vw] py-12 max-w-5xl mx-auto">
+      <h2 class="text-2xl font-bold mb-8 text-center">O que está incluído</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+          <h3 class="font-semibold mb-2">Astro v5</h3>
+          <p class="text-sm text-slate-400">
+            Framework moderno com zero JS por padrão e excelente DX.
+          </p>
+        </div>
+        <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+          <h3 class="font-semibold mb-2">Tailwind CSS v4</h3>
+          <p class="text-sm text-slate-400">
+            Utility-first CSS para estilização rápida e consistente.
+          </p>
+        </div>
+        <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+          <h3 class="font-semibold mb-2">TypeScript</h3>
+          <p class="text-sm text-slate-400">
+            Tipagem estática para código mais seguro e manutenível.
+          </p>
+        </div>
+        <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+          <h3 class="font-semibold mb-2">SEO Otimizado</h3>
+          <p class="text-sm text-slate-400">
+            Meta tags, Open Graph e sitemap automático incluídos.
+          </p>
+        </div>
+        <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+          <h3 class="font-semibold mb-2">Deploy Fácil</h3>
+          <p class="text-sm text-slate-400">
+            Pré-configurado para Vercel com cache otimizado.
+          </p>
+        </div>
+        <div class="p-6 bg-white/5 border border-white/10 rounded-xl">
+          <h3 class="font-semibold mb-2">Responsivo</h3>
+          <p class="text-sm text-slate-400">
+            Mobile-first design com navegação adaptativa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="px-[5vw] py-16 max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Pronto para começar?</h2>
+      <p class="text-slate-400 mb-8">
+        Clone o repositório e comece a construir sua landing page em minutos.
+      </p>
+      <a
+        href="/contato"
+        class="inline-block px-6 py-3 bg-accent text-bg font-semibold rounded-xl hover:opacity-90 transition"
+      >
+        Fale conosco
+      </a>
+    </section>
+  </main>
+
+  <Footer siteName="Landing" />
+</BaseLayout>
